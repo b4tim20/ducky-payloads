@@ -1,0 +1,52 @@
+REM ============================================================
+REM  02 - LAUNCHING THINGS ON WINDOWS
+REM  DuckyScript 1.0  ->  Pico Duck OK
+REM
+REM  Two ways to start a program:
+REM    (a) Win+R then type the command  -> reliable, works on all versions
+REM    (b) Win key then type the name   -> relies on Start Menu search
+REM ============================================================
+
+DEFAULT_DELAY 80
+
+REM --- (a) Run dialog: calculator ---
+GUI r
+DELAY 700
+STRING calc
+ENTER
+DELAY 1200
+REM Close it again so the demo does not leave windows open.
+ALT F4
+
+REM --- (a) Run dialog: command prompt ---
+GUI r
+DELAY 700
+STRING cmd
+ENTER
+DELAY 1200
+STRINGLN echo DuckyScript can type into a shell too.
+DELAY 400
+REM "exit" is a command typed into the shell, not a key name.
+STRING exit
+ENTER
+DELAY 500
+
+REM --- useful single-key Windows shortcuts ---
+REM GUI e   = File Explorer
+REM GUI d   = show desktop
+REM GUI l   = lock the workstation
+REM GUI i   = Settings
+REM GUI x   = the "power user" menu (same as right-clicking Start)
+REM CTRL-SHIFT-ESC = Task Manager (no Win+R needed)
+
+REM --- (b) Start Menu search ---
+GUI
+DELAY 600
+STRING mspaint
+ENTER
+DELAY 1500
+ALT F4
+
+REM Gotcha: if Start Menu search is disabled or indexed badly,
+REM method (b) silently fails on the first keystrokes. Prefer (a)
+REM when reliability matters.

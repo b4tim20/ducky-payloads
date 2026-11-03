@@ -1,0 +1,60 @@
+REM ============================================================
+REM  03 - KEYS, MODIFIERS AND REPEAT
+REM  DuckyScript 1.0  ->  Pico Duck OK
+REM
+REM  Modifiers: CTRL SHIFT ALT GUI
+REM  Combine them with a dash:  CTRL-ALT-DELETE, CTRL-SHIFT-ESC
+REM  A single modifier + a key is written with a space:  CTRL s
+REM ============================================================
+
+DEFAULT_DELAY 60
+
+GUI r
+DELAY 700
+STRING notepad
+ENTER
+DELAY 1500
+
+REM --- modifier + letter (CTRL+s = save dialogue) ---
+STRING this text will be saved
+ENTER
+CTRL s
+DELAY 800
+REM In the Save dialog: type a filename, then Enter.
+STRING sample-from-ducky.txt
+ENTER
+DELAY 800
+REM If a "file already exists" box pops up, confirm the overwrite:
+LEFTARROW
+ENTER
+DELAY 400
+
+REM --- arrow keys and navigation ---
+REM HOME END PAGEUP PAGEDOWN UPARROW DOWNARROW LEFTARROW RIGHTARROW
+REM TAB navigates controls; SHIFT-TAB goes backwards.
+CTRL a                 REM select all
+DELAY 200
+DELETE                 REM clear it
+DELAY 200
+STRINGLN replaced the whole buffer.
+
+REM --- REPEAT: press the previous key N more times ---
+DOWNARROW
+REPEAT 3              REM total 4 down-arrows
+HOME                  REM back to the top
+
+REM --- special keys by name ---
+REM ENTER TAB SPACE BACKSPACE DELETE ESC CAPSLOCK
+REM F1..F12  PRINTSCREEN  SCROLLLOCK  NUMLOCK  INSERT
+
+REM --- ALTCODE: type any character by its Windows alt-code ---
+REM Requires NUMLOCK on. 233 = e-acute, 0169 = copyright sign.
+NUMLOCK
+ALTCODE 0169
+DELAY 200
+
+REM Close Notepad and discard unsaved changes if prompted.
+ALT F4
+DELAY 600
+LEFTARROW
+ENTER

@@ -1,0 +1,53 @@
+REM ============================================================
+REM  06 - DUCKYSCRIPT 3.0: CONSTANTS, VARIABLES, CONDITIONALS
+REM
+REM  !! DS 3.0 ONLY !!
+REM  Does NOT work on Pico Duck (its parser is DuckyScript 1.0).
+REM  Needs a genuine Hak5 Rubber Ducky (firmware 3.x) or a DS3-aware
+REM  encoder. On a Pico, rewrite these as repeated 1.0 lines.
+REM
+REM  Naming rules:
+REM    DEFINE #NAME value   -> constant, referenced as #NAME
+REM    VAR    $name = value -> variable, referenced as $name
+REM ============================================================
+
+DEFINE #TARGET "notepad"
+DEFINE #WAIT 800
+
+VAR $greeting = "hello"
+VAR $count = 0
+
+REM --- launch the target using a constant ---
+GUI r
+DELAY #WAIT
+STRING #TARGET
+ENTER
+DELAY 1500
+
+REM --- variables inside STRING are substituted ---
+STRING $greeting from a variable.
+ENTER
+
+REM --- arithmetic and assignment ---
+$count = $count + 1
+$count = $count + 1
+
+REM --- IF / ELSE IF / ELSE / END_IF ---
+IF ($count == 2) THEN
+    STRINGLN Count is exactly two, as expected.
+ELSE IF ($count > 2) THEN
+    STRINGLN Count is greater than two.
+ELSE
+    STRINGLN Count is less than two.
+END_IF
+
+REM --- string concatenation ---
+VAR $msg = "final count: "
+$msg = $msg + $count
+STRINGLN $msg
+
+REM --- comparison operators ---
+REM   ==  !=  <  >  <=  >=      TRUE / FALSE are the booleans
+
+REM Note: some encoders want THEN, some don't. If yours errors on
+REM "THEN", drop it - both forms are accepted by current firmware.

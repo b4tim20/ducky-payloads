@@ -1,0 +1,41 @@
+REM ============================================================
+REM  04 - TIMING: THE #1 CAUSE OF BROKEN PAYLOADS
+REM  DuckyScript 1.0  ->  Pico Duck OK
+REM
+REM  A duck types at hardware speed. Windows is not ready for it.
+REM  Every "my payload stops halfway" bug is usually a missing DELAY.
+REM ============================================================
+
+REM DEFAULT_DELAY applies to every keystroke that follows.
+REM 0 = as fast as USB allows (great for shells, terrible for UIs).
+DEFAULT_DELAY 0
+REM Type this fast into Notepad and characters WILL be dropped on
+REM a busy machine. Watch it happen, then fix it below.
+
+GUI r
+DELAY 700                REM Run dialog needs time to appear
+STRING notepad
+ENTER
+DELAY 1500               REM Notepad needs time to draw
+
+REM Now slow down for UI work. 50 ms is a good default for typing.
+DEFAULT_DELAY 50
+STRING This is typed at 50 ms per keystroke - reliable in most UIs.
+ENTER
+
+REM For anything that renders slowly (browsers, Electron apps,
+REM first launch after boot) use a one-off DELAY instead:
+DELAY 2000
+
+REM --- rules of thumb ---
+REM   after GUI r ..................... 700-1000 ms
+REM   after launching an app .......... 1200-2500 ms
+REM   between menu interactions ....... 300-600 ms
+REM   typing into a UI ................ DEFAULT_DELAY 50
+REM   typing into a console ........... DEFAULT_DELAY 0-10
+REM
+REM On a cold boot add 3-5 seconds at the very top of the payload.
+REM In a VM add more: virtualised USB is slower than real hardware.
+
+DELAY 500
+STRINGLN Timing demo finished.

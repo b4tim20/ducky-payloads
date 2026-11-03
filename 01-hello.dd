@@ -1,0 +1,36 @@
+REM ============================================================
+REM  01 - HELLO WORLD
+REM  DuckyScript 1.0  ->  works on Pico Duck / Rubber Ducky
+REM
+REM  Five commands get you 90% of the way:
+REM    REM           comment (ignored)
+REM    DEFAULT_DELAY ms pause between EVERY keystroke
+REM    DELAY ms      one-off pause
+REM    STRING text   types text literally
+REM    ENTER         presses Enter
+REM ============================================================
+
+DEFAULT_DELAY 100
+
+REM --- open a window to type into ---
+REM GUI == the Windows key. "GUI r" = Win+R (Run dialog).
+GUI r
+REM Always delay after GUI r. 500 ms is safe on a cold machine,
+REM 1500 ms if the box is slow / first boot.
+DELAY 800
+
+STRING notepad
+ENTER
+DELAY 1500                REM let Notepad draw before typing
+
+REM --- the typing itself ---
+STRING Hello from DuckyScript.
+ENTER
+STRING This line uses STRING plus an explicit ENTER.
+ENTER
+
+REM STRINGLN = type the string, then press ENTER automatically.
+STRINGLN This line used STRINGLN, so no separate ENTER was needed.
+
+REM Blank lines in a payload are ignored (they are not keystrokes).
+STRINGLN Typing is done. Nothing was saved or executed.

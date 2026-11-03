@@ -1,0 +1,42 @@
+REM ============================================================
+REM  05 - STRINGS: QUOTES, BACKSLASHES, SPECIAL CHARACTERS
+REM  DuckyScript 1.0  ->  Pico Duck OK
+REM
+REM  STRING types everything after it literally, INCLUDING spaces.
+REM  There is no escaping: quote marks are just characters.
+REM  The only thing that ends a STRING is the end of the line.
+REM ============================================================
+
+DEFAULT_DELAY 40
+
+GUI r
+DELAY 700
+STRING notepad
+ENTER
+DELAY 1500
+
+REM Quotes need no escaping - they are typed as-is.
+STRING "double quotes" and 'single quotes' both just type.
+ENTER
+
+REM Backslashes are literal too - handy for paths.
+STRING C:\Users\Public\Documents\report.txt
+ENTER
+
+REM Characters that are keystrokes, not text, must be separate lines:
+REM   %  is fine inside STRING, but in CMD it can be a variable marker
+REM   &  |  <  >  are shell operators - fine in Notepad, dangerous in cmd
+REM If you need them in a shell, wrap the whole command in quotes.
+
+REM To type the literal word STRING, just include it in the text:
+STRING The word STRING is only a command at the start of a line.
+ENTER
+
+REM To type a line that begins with a command word, prepend a space:
+STRING  REM this line has a leading space so it is text
+ENTER
+
+REM Empty STRING lines are pointless - use ENTER instead.
+ENTER
+
+STRINGLN Done. Nothing here executed anything - it is all text.

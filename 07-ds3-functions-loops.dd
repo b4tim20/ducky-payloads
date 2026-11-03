@@ -1,0 +1,44 @@
+REM ============================================================
+REM  07 - DUCKYSCRIPT 3.0: FUNCTIONS AND LOOPS
+REM
+REM  !! DS 3.0 ONLY !!  Not supported by Pico Duck.
+REM  In DS 1.0 the equivalent of a loop is copy-pasting lines,
+REM  and the equivalent of a function is... copy-pasting lines.
+REM ============================================================
+
+VAR $i = 1
+
+REM --- a function that types one numbered line ---
+FUNCTION write_line()
+    VAR $text = "line "
+    $text = $text + $i
+    STRINGLN $text
+END_FUNCTION
+
+GUI r
+DELAY 800
+STRING notepad
+ENTER
+DELAY 1500
+
+REM --- WHILE loop: call the function three times ---
+WHILE ($i <= 3)
+    write_line()
+    $i = $i + 1
+END_WHILE
+
+REM --- simple countdown with IF inside the loop ---
+VAR $j = 3
+WHILE ($j > 0)
+    STRING $j
+    STRINGLN ...
+    $j = $j - 1
+END_WHILE
+STRINGLN liftoff
+
+REM --- notes ---
+REM  * Function bodies are not executed until called.
+REM  * Variables set inside a function are global in current firmware.
+REM  * A function may RETURN() early to exit.
+REM  * Keep loops bounded - an infinite WHILE will hang the duck until
+REM    it is unplugged, and the payload restarts on every replug.
