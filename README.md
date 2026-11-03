@@ -16,3 +16,7 @@ behaves the way it does rather than just *what* it types.
 Nothing here is destructive: the demos type into Notepad, Calculator and cmd, and close what they open.
 The README documents which constructs are DS 1.0 vs DS 3.0, because the two are not interchangeable —
 a DS 3.0 file on a first-generation Ducky fails silently rather than erroring.
+
+## License
+
+MIT — see `LICENSE`.
